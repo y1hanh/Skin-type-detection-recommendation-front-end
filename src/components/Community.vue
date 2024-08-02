@@ -1,5 +1,16 @@
 <script setup>
-import mbti_array from "../assets/mbti_array.json"
+import { ref } from "vue";
+import mbti_array from "../assets/mbti_array.json";
+import { Input } from 'ant-design-vue';
+
+function searchMbti() {
+  console.log("clicked!")
+};
+
+const message = ref("");
+
+const { TextArea } = Input;
+
 </script>
 
 <template>
@@ -8,15 +19,18 @@ import mbti_array from "../assets/mbti_array.json"
     <p class="header">All community</p>
     <hr style="color: #D2CFCF;"/>
     <ul v-for="mbti in mbti_array.mbti" :key="mbti">
-      <li># {{ mbti }} </li>
+      <li @click="searchMbti" style="color: #858383;"># {{ mbti }} </li>
     </ul>
   </div>
   <div class="community-flex-right">
-    <div class="top-box">
-      Make a new post
-    </div>
+    <TextArea 
+    class="top-box" 
+    v-model="message" 
+    placeholder="add multiple lines" 
+    :rows="10"  
+    :maxlength="6">
+    </TextArea>
     <div class="button-box">
-      Check out the posts!
     </div>
   </div>
 </body>
@@ -34,23 +48,36 @@ ul{
 }
 .community-flex-left {
   flex-grow: 1;
-  border-radius: 8%;
+  border-radius: 30px;
   border-style: solid;
   background-color: #FFFFFF;
   border-color: #D2CFCF;
   margin-right: 3rem;
 }
+
+.top-box {
+  flex-grow: 1;
+  border-radius: 30px;
+  border-style: solid;
+  background-color: #FFFFFF;
+  border-color: #D2CFCF;
+  margin-right: 3rem;
+}
+
 .community-flex-right {
   flex-grow: 5;
   display: flex;
   flex-direction: column;
 }
 
-.top-box {
-  flex-grow: 1;
-}
 .button-box{
   flex-grow: 4;
+  margin-top: 2rem;
+  border-radius: 30px;
+  border-style: solid;
+  background-color: #FFFFFF;
+  border-color: #D2CFCF;
+  margin-right: 3rem;
 }
 
 .header {
