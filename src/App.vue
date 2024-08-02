@@ -1,24 +1,37 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRoute } from 'vue-router'
+import { computed } from 'vue'
+
+const route = useRoute()
+
+const navbarClass = computed(() => {
+  return route.path === '/community' ?  'other-route'  : 'home-route'
+})
 </script>
 
 <template>
   <body>
-    <div class="navbar">
+    <div :class="navbarClass" class="navbar">
       <nav class="navbar-parent">
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/mbti">MBTI</RouterLink>
-        <RouterLink to="/community">Community</RouterLink>
+        <RouterLink to="/" active-class="active-link">HOME</RouterLink>
+        <RouterLink to="/mbti" active-class="active-link">MBTI</RouterLink>
+        <RouterLink to="/community" active-class="active-link">COMMUNITY</RouterLink>
       </nav>
 
+      
+      <span class="navbar-profile">
+        <RouterLink to="/mbti">LOGIN |</RouterLink>
+        <RouterLink to="/community">SIGNUP</RouterLink>
+      <!--
       <span>
         <img 
-        alt="user profile" 
-        class="navbar-profile" 
-        src="./components/icons/kuromi.png" 
-        width="45" height="45" />
+          alt="user profile" 
+          class="navbar-profile" 
+          src="./components/icons/kuromi.png" 
+          width="45" height="45" />
       </span>
-
+      -->
+      </span>
     </div>
     <RouterView class="mainbody"/>
   </body>
@@ -27,23 +40,49 @@ import { RouterLink, RouterView } from 'vue-router'
 <style scoped>
 body {
   display: flex;
-  flex-direction:  column;
+  flex-direction: column;
 }
 
 .navbar {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  padding: 35px 55px;
+}
+
+.home-route {
+  background-color: #802F22;
+  
+}
+
+.other-route {
+  background-color: #F3E5D9;
+}
+
+.navbar-profile a {
+  color:rgb(30, 30, 30);
 }
 
 .navbar-parent {
   display: flex;
   width: 50%;
-  flex-direction:  row;
-  justify-content: space-between;
+  flex-direction: row;
+  align-items: left;
+  gap: 10px;
 }
+
+
+.navbar-parent a {
+  color:rgb(30, 30, 30);
+}
+.navbar-parent .active-link {
+  color: #b3b2b2; 
+}
+.mainbody {
+  /* Add your styles here */
 
 img {
   border-radius: 50%;
+
 }
 </style>
