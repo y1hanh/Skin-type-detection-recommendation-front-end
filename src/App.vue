@@ -10,6 +10,7 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/mbti">MBTI</RouterLink>
         <RouterLink to="/community">Community</RouterLink>
       </nav>
+      
       <span>
         <img 
         alt="user profile" 
@@ -17,6 +18,7 @@ import { RouterLink, RouterView } from 'vue-router'
         src="./components/icons/user_avatar.png" 
         width="35" height="35" />
       </span>
+
     </div>
     <RouterView class="mainbody"/>
   </body>

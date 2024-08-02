@@ -1,6 +1,6 @@
  /* color palette from <https://github.com/vuejs/theme> */
 :root {
-  --vt-c-white: #EDD0B7;
+  --vt-c-white: #f3e5d9;
   --vt-c-white-soft: #f8f8f8;
   --vt-c-white-mute: #f2f2f2;
 
@@ -23,7 +23,7 @@
 
 semantic color variables for this project */
 :root {
-  --color-background: #EDD0B7;
+  --color-background: #f3e5d9;
   --color-background-soft: var(--vt-c-white-soft);
   --color-background-mute: var(--vt-c-white-mute);
 
@@ -61,7 +61,7 @@ semantic color variables for this project */
 body {
   min-height: 100vh;
   color: var(--color-text);
-  background: #EDD0B7;
+  background: #f3e5d9;
   transition:
     color 0.5s,
     background-color 0.5s;
