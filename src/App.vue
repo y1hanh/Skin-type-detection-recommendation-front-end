@@ -79,7 +79,7 @@ body {
   color: #b3b2b2; 
 }
 .mainbody {
-  /* Add your styles here */
+  /* Add your styles here */}
 
 img {
   border-radius: 50%;

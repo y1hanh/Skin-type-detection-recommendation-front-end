@@ -16,8 +16,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.5",
-    "vite": "^5.3.5"
-    "unplugin-vue-components": "^0.27.3",
-   
+    "vite": "^5.3.5",
+    "unplugin-vue-components": "^0.27.3"
   }
 }
