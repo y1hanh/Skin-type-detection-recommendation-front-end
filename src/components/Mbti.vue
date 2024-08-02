@@ -19,6 +19,8 @@ import Survey from "./Survey.vue"
   display: flex;
   flex-direction:  row;
   justify-content: center;
+  padding: 0 55px;
+  background-color: #802F22; 
 }
 
 .mbti-box {

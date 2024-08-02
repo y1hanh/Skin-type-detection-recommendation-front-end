@@ -1,4 +1,4 @@
 <template>
-Community page...
-</template>
+   
+  </template>
   

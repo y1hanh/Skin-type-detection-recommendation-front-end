@@ -5,7 +5,7 @@ img{width: 40%; }
   color: #E69950; /* Set text color to yellow */
   font-weight: bold; 
   font-family: 'Times New Roman';
-  font-size: 45px;
+  font-size: 40px;
 }
 
 .mbtiExplainMain img{
@@ -29,9 +29,16 @@ li {
   font-size: 16px; /* Adjust font size */
   line-height: 1.6; /* Adjust line height for readability */
   font-family: 'Courier New', Courier, monospace;
-  font-size: 20px;
+  font-size: 23px;
+}
+.mbtiExplainContent img {
+  cursor: url('../assets/colorPicker.png'), auto; 
 }
 
+/* Add a fallback for debugging purposes */
+.mbtiExplainContent img:hover {
+  cursor: url('../assets/colorPicker.png'), auto; 
+}
 .mbtiExplainContent {
   display: flex;
   align-items: flex-start; /* Align items to the start */
@@ -50,9 +57,9 @@ li {
         <ul>
           <li>D = Dehydration or Dry Skin</li>
           <li>O = Oily Skin or Normal Skin</li>
-          <li>S = Sensitive Skin</li><li> R = Resistant Skin</li>
-          <li>P = Uneven Skin Pigment (dark spots on face) </li><li> N = No Dark Spots</li>
-          <li>W = Wrinkle-prone </li><li> T = Tight Unwrinkled Skin & Healthy Habits</li>
+          <li>S = Sensitive Skin </li><li > R = Resistant Skin</li>
+          <li>P = Uneven Skin Pigment (dark spots on face)  </li><li > N = No Dark Spots</li>
+          <li>W = Wrinkle-prone  </li><li > T = Tight Unwrinkled Skin & Healthy Habits</li>
         </ul>
       </div>
     </main>

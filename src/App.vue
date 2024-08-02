@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const route = useRoute()
 
 const navbarClass = computed(() => {
-  return route.path === '/' ? 'home-route' : 'other-route'
+  return route.path === '/community' ?  'other-route'  : 'home-route'
 })
 </script>
 
@@ -50,7 +50,7 @@ body {
 }
 
 .navbar-profile a {
-  color:rgb(43, 43, 43);
+  color:rgb(30, 30, 30);
 }
 
 .navbar-parent {
@@ -62,7 +62,7 @@ body {
 }
 
 .navbar-parent a {
-  color:rgb(43, 43, 43);
+  color:rgb(30, 30, 30);
 }
 .navbar-parent .active-link {
   color: #b3b2b2; 

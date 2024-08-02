@@ -2,31 +2,38 @@
   <main style="background-color: #802F22;">
     <div class = "homeComponent">
       <div class="homeImage">
-      <img src="../assets/homeSkin1.png" alt="image" />
+      <img src='../assets/homeSkin1.png' alt="image" />
       <img src="../assets/homeSkin2.png" alt="image" />
       <img src="../assets/homeSkin3.png" alt="image" />
     </div>
     <div class ="bmtiImage">
       <h2>SkinMBTI</h2>
       <p>Identify your skin MBTI  based on our AI scanner and analyzer</p>
-      <img src="../assets/homeSkin4.png" alt="image" />
+      <div  class="bmtiImageInner">
+        <img src="../assets/homeSkin4.png" alt="image"/>
+        
+      <div class="updown-bar-inner">
+      </div>
+    </div>
+      
     </div>
     </div>
     <div class ="scanBtn">
-      <button >TEST ➤</button>
+      <button @click="handleTestClick">TEST ➤</button>
     </div>
-    
+   
   </main>
 </template>
 
 <style scoped>
+
 .scanBtn{
   display: flex;
   justify-content: center;
 }
 
 .scanBtn button{
-  background-color: #E69247; 
+  background-color: #FFF0E0; 
   color: black; 
   border: none; 
   padding: 15px 85px; 
@@ -37,7 +44,7 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s ease; 
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   font-family: Cambria
 }
 .btnImg{
@@ -53,7 +60,6 @@
 .bmtiImage p {
   font-size: 1.4em; 
   margin-bottom: 1.5%; 
-  
   font-family:Caudex;
   color: #ffffff;
   text-align: center;
@@ -65,7 +71,20 @@
   justify-content: center;
   align-items: center;
   padding: 5% ; 
+  position: relative;
 }
+
+.bmtiImageInner{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2%;
+  justify-content: center;
+  align-items: center;
+  padding: 5% ; 
+  position: relative;
+}
+
+
 .homeComponent{
   display: flex;
   flex-direction: row;
@@ -116,4 +135,40 @@
     height: auto; /* Maintain aspect ratio */
   }
 }
+
+
+  
+  .updown-bar-inner {
+  width: 80%;
+  height: 100%;
+  border-top: 2px solid white; /* Change color and thickness as needed */
+  position: absolute; /* Ensure it covers the parent */
+  bottom: -70%; /* Start position */
+  animation: updown 5s infinite ease-in-out;
+}
+  
+  @keyframes updown {
+    0% {
+      bottom: -70%;
+    }
+    50% {
+      bottom: -20%;
+    }
+    100% {
+      bottom: -70%;
+    }
+  }
 </style>
+
+<script setup>
+import {useRouter} from 'vue-router';
+
+
+const router = useRouter();
+
+function handleTestClick(){
+  router.push('/MBTI')
+}
+
+
+</script>
