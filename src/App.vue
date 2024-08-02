@@ -17,10 +17,20 @@ const navbarClass = computed(() => {
         <RouterLink to="/mbti" active-class="active-link">MBTI</RouterLink>
         <RouterLink to="/community" active-class="active-link">COMMUNITY</RouterLink>
       </nav>
+
       
       <span class="navbar-profile">
         <RouterLink to="/mbti">LOGIN |</RouterLink>
         <RouterLink to="/community">SIGNUP</RouterLink>
+      <!--
+      <span>
+        <img 
+          alt="user profile" 
+          class="navbar-profile" 
+          src="./components/icons/kuromi.png" 
+          width="45" height="45" />
+      </span>
+      -->
       </span>
     </div>
     <RouterView class="mainbody"/>
@@ -61,6 +71,7 @@ body {
   gap: 10px;
 }
 
+
 .navbar-parent a {
   color:rgb(30, 30, 30);
 }
@@ -69,5 +80,9 @@ body {
 }
 .mainbody {
   /* Add your styles here */
+
+img {
+  border-radius: 50%;
+
 }
 </style>
