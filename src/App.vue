@@ -10,13 +10,13 @@ import { RouterLink, RouterView } from 'vue-router'
         <RouterLink to="/mbti">MBTI</RouterLink>
         <RouterLink to="/community">Community</RouterLink>
       </nav>
-      
+
       <span>
         <img 
         alt="user profile" 
         class="navbar-profile" 
-        src="./components/icons/user_avatar.png" 
-        width="35" height="35" />
+        src="./components/icons/kuromi.png" 
+        width="45" height="45" />
       </span>
 
     </div>
@@ -43,7 +43,7 @@ body {
   justify-content: space-between;
 }
 
-.mainbody {
-
+img {
+  border-radius: 50%;
 }
 </style>

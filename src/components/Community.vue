@@ -1,4 +1,6 @@
+<script setup>
+</script>
+
 <template>
-Community page...
+<h1></h1>
 </template>
-  
