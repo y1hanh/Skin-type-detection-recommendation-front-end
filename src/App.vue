@@ -32,7 +32,7 @@ body {
 
 .navbar {
   display: flex;
-  flex-direction:  row;
+  flex-direction: row;
   justify-content: space-between;
 }
 
