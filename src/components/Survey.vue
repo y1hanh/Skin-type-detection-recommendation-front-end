@@ -1,195 +1,119 @@
 <template>
   <main>
     <div class="parent">
-    <div class="surveyParent"><h1>Survey</h1>
-    <p>To let us get to know your skinMBTI better...</p></div>
-    
-    
-    <!-- Survey boxes -->
-    <div>
-      <!-- Moisture Level Survey -->
-      <div v-if="currentSurvey === 1" class="surveyBox">
-        <h3>How would you describe your skin's moisture level?</h3>
-        <div class="surveyAnswer">
-          <div v-for="(option, index) in moistureOptions" :key="'moisture-' + index" class="checkbox-group">
-            <input
-              type="checkbox"
-              :id="'moisture-checkbox-' + index"
-              v-model="selectedMoistureOptions"
-              :value="option"
-            />
-            <label :for="'moisture-checkbox-' + index">{{ option }}</label>
-          </div>
-        </div>
+      <div class="surveyParent">
+        <h1>Survey</h1>
+        <p>To let us get to know your skinMBTI better...</p>
       </div>
 
-      <!-- Sensitivity Level Survey -->
-      <div v-if="currentSurvey === 2" class="surveyBox">
-        <h3>How does your skin react to new skincare products or environmental changes?</h3>
-        <div class="surveyAnswer">
-          <div v-for="(option, index) in sensitivityOptions" :key="'sensitivity-' + index" class="checkbox-group">
-            <input
-              type="checkbox"
-              :id="'sensitivity-checkbox-' + index"
-              v-model="selectedSensitivityOptions"
-              :value="option"
-            />
-            <label :for="'sensitivity-checkbox-' + index">{{ option }}</label>
+      <!-- Survey boxes -->
+      <div>
+        <div v-for="survey in surveys" :key="survey.id">
+          <div v-if="currentSurvey === survey.id" class="surveyBox">
+            <h3>{{ survey.question }}</h3>
+            <div class="surveyAnswer">
+              <!-- Single choice (radio) -->
+              <div v-if="survey.type === 'radio'">
+                <div v-for="(option, index) in survey.options" :key="survey.id + '-' + index" class="radio-group">
+                  <input
+                    type="radio"
+                    :id="survey.id + '-radio-' + index"
+                    :name="'survey-' + survey.id" 
+                    v-model="models[survey.model]"
+                    :value="option"
+                  />
+                  <label :for="survey.id + '-radio-' + index">{{ option }}</label>
+                </div>
+              </div>
+              <!-- Multiple choice (checkbox) -->
+              <div v-if="survey.type === 'checkbox'">
+                <div v-for="(option, index) in survey.options" :key="survey.id + '-' + index" class="checkbox-group">
+                  <input
+                    type="checkbox"
+                    :id="survey.id + '-checkbox-' + index"
+                    v-model="models[survey.model]"
+                    :value="option"
+                  />
+                  <label :for="survey.id + '-checkbox-' + index">{{ option }}</label>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <!-- Dark Spots Survey -->
-      <div v-if="currentSurvey === 3" class="surveyBox">
-        <h3>Do you have any visible dark spots, freckles, or uneven skin tone?</h3>
-        <div class="surveyAnswer">
-          <div class="checkbox-group">
-            <input
-              type="radio"
-              id="darkspots-yes"
-              v-model="selectedDarkSpots"
-              value="Yes, I have dark spots, freckles, or uneven pigmentation."
-            />
-            <label for="darkspots-yes">Yes, I have dark spots, freckles, or uneven pigmentation.</label>
-          </div>
-          <div class="checkbox-group">
-            <input
-              type="radio"
-              id="darkspots-no"
-              v-model="selectedDarkSpots"
-              value="No, my skin tone is fairly even without noticeable dark spots."
-            />
-            <label for="darkspots-no">No, my skin tone is fairly even without noticeable dark spots.</label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Wrinkles Survey -->
-      <div v-if="currentSurvey === 4" class="surveyBox">
-        <h3>How prone is your skin to developing fine lines or wrinkles?</h3>
-        <div class="surveyAnswer">
-          <div class="checkbox-group">
-            <input
-              type="radio"
-              id="wrinkles-yes"
-              v-model="selectedWrinkles"
-              value="I have visible fine lines or wrinkles, or I notice them developing. "
-            />
-            <label for="wrinkles-yes">I have visible fine lines or wrinkles, or I notice them developing. </label>
-          </div>
-          <div class="checkbox-group">
-            <input
-              type="radio"
-              id="wrinkles-no"
-              v-model="selectedWrinkles"
-              value="My skin is smooth, with minimal to no visible wrinkles. "
-            />
-            <label for="wrinkles-no">My skin is smooth, with minimal to no visible wrinkles. </label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Skin Concern Survey -->
-      <div v-if="currentSurvey === 5" class="surveyBox">
-        <h3>What is your biggest skin concern or priority? (multiple answers)</h3>
-        <div class="surveyAnswer">
-          <div v-for="(option, index) in concernOptions" :key="'concern-' + index" class="checkbox-group">
-            <input
-              type="checkbox"
-              :id="'concern-checkbox-' + index"
-              v-model="selectedConcerns"
-              :value="option"
-            />
-            <label :for="'concern-checkbox-' + index">{{ option }}</label>
-          </div>
-        </div>
-      </div>
+      
+      <button class="surveyBtn" @click="nextSurvey">Next Survey</button>
+      
     </div>
-
-    <button class="surveyBtn" @click="nextSurvey">Next Survey</button>
-  </div>
   </main>
 </template>
 
+
 <script setup>
 import { ref } from 'vue'
-import {useRouter} from 'vue-router';
+import { useRouter } from 'vue-router'
+import surveyData from '../assets/surveyQuestions.json'
 
-// Options for the skin moisture level survey
-const moistureOptions = ref([
-  'My skin often feels tight, rough, or flaky.',
-  'My skin feels balanced, not particularly oily or dry.',
-  'My skin often feels oily, especially by the end of the day.'
-])
+const surveys = ref(surveyData)
 
-// Options for the skin sensitivity level survey
-const sensitivityOptions = ref([
-  'My skin often reacts with redness, itching, or breakouts.',
-  'My skin rarely reacts to products or environmental changes.'
-])
+const models = {
+  selectedMoistureOption: ref(''),
+  selectedSensitivityOption: ref(''),
+  selectedDarkSpots: ref(''),
+  selectedWrinkles: ref(''),
+  selectedConcerns: ref([])
+}
 
-// Options for the skin concern survey
-const concernOptions = ref([
-  'Reducing fine lines and wrinkles.',
-  'Managing acne or breakouts.',
-  'Evening out skin tone and pigmentation.',
-  'Controlling oil and shine',
-  'Hydrating and soothing dry skin',
-  'Maintaining a natural and minimal skincare routine'
-])
-
-// Arrays to hold selected options for each survey
-const selectedMoistureOptions = ref([])
-const selectedSensitivityOptions = ref([])
-const selectedDarkSpots = ref('')
-const selectedWrinkles = ref('')
-const selectedConcerns = ref([])
-
-// Variable to track the currently visible survey
 const currentSurvey = ref(1)
 
-const router = useRouter();
+const router = useRouter()
 
-// Function to switch surveys
 const nextSurvey = () => {
-  if (currentSurvey.value === 5) {
+  if (currentSurvey.value === surveys.value.length) {
     // Handle form submission here
-    alert('Form submitted!')
-    currentSurvey.value = 5
-    router.push('/community')
+    alert('Survey done!')
+    
+    // router.push('/community')
   } else {
     currentSurvey.value += 1
   }
 }
 </script>
 
+
+
 <style scoped>
-.surveyBtn{
-  background-color: #E69247; 
-  color: black; 
-  border: none; 
-  padding: 9px 20px; 
-  text-align: center; 
-  font-size: 16px; 
-  margin-top:10px;
+.surveyBtn {
+  background-color: #E69247;
+  color: black;
+  border: none;
+  padding: 9px 20px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 10px;
   margin-bottom: 80px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  font-family: Cambria
+  font-family: Cambria;
 }
 
-h1{font-size: 2.1em; 
-  font-family:Impact;
-  color: #E69247;}
-  .surveyParent p{
-    font-family:Haettenschweiler;
+h1 {
+  font-size: 2.1em;
+  font-family: Impact;
+  color: #E69247;
+}
+
+.surveyParent p {
+  font-family: Haettenschweiler;
   color: #f7a863;
-  }
-  .parent{
-    padding: 1% 15%;
-  }
+}
+
+.parent {
+  padding: 1% 15%;
+}
+
 .surveyBox {
   padding: 20px;
   border: 1px solid #ddd;
@@ -210,6 +134,16 @@ h1{font-size: 2.1em;
   padding: 2%;
 }
 
+.radio-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.radio-group input[type="radio"] {
+  margin-right: 10px;
+}
+
 .checkbox-group {
   display: flex;
   align-items: center;
@@ -219,4 +153,5 @@ h1{font-size: 2.1em;
 .checkbox-group input[type="checkbox"] {
   margin-right: 10px;
 }
+
 </style>

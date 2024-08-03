@@ -34,7 +34,7 @@ const items = ref([
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; 
   background-color: #782619;
-  padding: 20px; /* Add padding around the container */
+  padding: 100px 20px; /* Add padding around the container */
 }
 
 .scrollable-item {
@@ -79,11 +79,11 @@ const items = ref([
 }
 
 .scrollable-container h2 {
-  font-size: 2.1em;
-  font-family: 'Jim Nightshade';
-  font-style: italic;
-  color: #E69247;
-  text-align: center; /* Center align the heading */
-  margin-bottom: 20px; /* Space below the heading */
+  text-align: center; /* Center align text */
+  color: #E69950; /* Set text color to yellow */
+  font-weight: bold; 
+  font-family: 'Times New Roman';
+  font-size: 40px;
+  margin-bottom: 7%;
 }
 </style>
