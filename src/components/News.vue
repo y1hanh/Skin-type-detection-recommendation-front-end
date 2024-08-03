@@ -35,7 +35,7 @@ const items = ref([
   overflow-x: auto; /* Enable horizontal scrolling */
   white-space: nowrap; 
   background-color: #782619;
-  padding: 100px 20px; /* Add padding around the container */
+  padding: 140px 20px; /* Add padding around the container */
 }
 
 .scrollable-item {

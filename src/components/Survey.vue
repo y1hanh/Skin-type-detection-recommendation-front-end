@@ -46,11 +46,15 @@
     </div>
   </div>
       <!-- Results Display -->
-      <div v-else v-if="currentSurvey === surveys.length" class="surveyBox" >
-        <h2>Survey Results</h2>
+      <div v-else v-if="currentSurvey === surveys.length" class="resultBox" >
+        <h3><strong>AI Scan Result:</strong></h3>
+        <div v-if="resultText" v-html="resultText"></div>
+        <h3><strong>Survey Result:</strong></h3>
         <p>{{ surveyResult }}</p>
         <p>{{ descriptionResult }}</p>
-        <button class="community-button" @click="handleUpload">Connect to community</button>
+        <div class="community">
+          <button class="community-button" @click="handleCommunity">Be part of the {{ surveyResult }} skin type community</button>
+        </div>
       </div>
       
     </div>
@@ -59,8 +63,19 @@
 
 <script setup>
 import { ref } from 'vue'
+import {useRouter} from 'vue-router';
 import surveyData from '../assets/surveyQuestions.json'
 import surveyResults from '../assets/surveyResults.json'
+
+const router = useRouter();
+const props = defineProps({
+  resultText: {
+    type: String,
+    default: ''
+  }
+});
+
+
 
 const surveys = ref(surveyData)
 
@@ -70,6 +85,10 @@ const models = ref({
   selectedDarkSpots: [], // Should be an array
   selectedWrinkles: [], // Should be an array
 });
+
+const handleCommunity = () =>{
+  router.push('/community')
+}
 
 
 const currentSurvey = ref(1)
@@ -119,9 +138,14 @@ const compareAnswers = () => {
 
 
 <style scoped>
-
+.community{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .community-button {
-  background-color: #8c2515;
+  background-color: #422116;
   border-radius: 8px;
   border: none;
   color: white;
@@ -131,8 +155,7 @@ const compareAnswers = () => {
   font-weight: 500;
   padding: 10px 20px;
   text-align: center;
-  transition: background-color 200ms, transform 200ms;
-  margin-left: auto;
+  margin-top: 20px;
   
 }
 .surveyBtn {
@@ -164,6 +187,14 @@ h1 {
 
 .parent {
   padding: 1% 15%;
+}
+.resultBox{
+  padding: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f7f2ed;
+  margin-top: 60px;
+  margin-bottom: 90px; /* Add margin between survey boxes */
 }
 
 .surveyBox {
