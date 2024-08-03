@@ -3,8 +3,9 @@
     <div class="parent">
       <h2>Scan Your SkinMBTI here</h2>
       <div class="image-container">
-        <video id="video" autoplay></video>
+        <video v-show="!flag" id="video" autoplay></video>
         <canvas id="canvas" style="display: none;"></canvas>
+        <img v-show="flag" id="captured-image" style = "display: none;"/>
       </div>
       <div class="button-container">
         <div class="camera-container">
@@ -37,7 +38,8 @@ export default {
       uploadClicked: false,
       nextSectionVisible: false,
       resultText: '',
-      allImages: []
+      allImages: [],
+      flag: false
     };
   },
   methods: {
@@ -49,10 +51,16 @@ export default {
       canvas.height = 240;
       const context = canvas.getContext('2d');
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
+      const imageElement = document.getElementById('captured-image');
       
-      // Convert canvas to Blob and analyze image
       canvas.toBlob(async (blob) => {
         if (blob) {
+          const imageUrl = URL.createObjectURL(blob);
+          imageElement.src = imageUrl;
+          this.flag = true;
+          imageElement.style.display = "block";
+          video.style.display = null;
+
           await this.analyzeImage(blob);
         } else {
           console.error('Failed to capture image.');
