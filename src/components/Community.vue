@@ -26,7 +26,6 @@ function searchMbti(index) {
 
   
 <template>
-<body>
   <div class="community-flex-parent">
     <div class="community-flex-left">
       <p class="header">All community</p>
