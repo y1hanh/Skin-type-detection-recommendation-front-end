@@ -5,7 +5,7 @@ import { computed } from 'vue'
 const route = useRoute()
 
 const navbarClass = computed(() => {
-  return route.path === '/community' ?  'other-route'  : 'home-route'
+  return route.path === '/' ?  'home-route':'other-route'  
 })
 </script>
 
