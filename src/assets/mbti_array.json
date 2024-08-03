@@ -1,5 +1,50 @@
-{
-  "mbti": ["DRPT", "DRNT", "DSPT", "DSNT", "DRPW", "DRNW", "DSPW", "DSNW",
-  "ORPT", "ORNT", "OSPT", "OSNT", 
-"ORPW", "ORNW", "OSPW", "OSNW"]
-}
+[
+  {
+    "label": "DRPT",
+    "value": "DRPT"},
+  {
+    "label": "DRNT",
+    "value": "DRNT"},
+  {
+    "label": "DSPT",
+    "value": "DSPT"},
+  {
+    "label": "DSNT",
+    "value": "DSNT"},
+  {
+    "label": "DRPW",
+    "value": "DRPW"},
+  {
+    "label": "DRNW",
+    "value": "DRNW"},
+  {
+    "label": "DSPW",
+    "value": "DSPW"},
+  {
+    "label": "DSNW",
+    "value": "DSNW"},
+  {
+    "label": "ORPT",
+    "value": "ORPT"},
+  {
+    "label": "ORNT",
+    "value": "ORNT"},
+  {
+    "label": "OSPT",
+    "value": "OSPT"},
+  {
+    "label": "OSNT",
+    "value": "OSNT"},
+  {
+    "label": "ORPW",
+    "value": "ORPW"},
+  {
+    "label": "ORNW",
+    "value": "ORNW"},
+  {
+    "label": "OSPW",
+    "value": "OSPW"},
+  {
+    "label": "OSNW",
+    "value": "OSNW"}
+]

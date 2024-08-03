@@ -1,14 +1,18 @@
 <script setup>
 import { computed, ref } from "vue";
 import mbti_array from "../assets/mbti_array.json";
-import { Input } from 'ant-design-vue';
+import { Button,Input, Upload, Select } from 'ant-design-vue';
+import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
 import PostCard from "./PostCard.vue"
 import postTestData from "../assets/postTestData.json"
 
 const message = ref("");
-const newPost = ref("");
+const postImage = ref([])
+const imageUrl = ref("")
+const loading = ref(true)
+const postType = ref("")
 
-const mbtiArray = mbti_array.mbti;
+const mbtiArray = mbti_array.filter((v) => v.value);
 const colorArray = ref(new Array(mbtiArray.length));
 colorArray.value.fill(false);
 
@@ -20,6 +24,20 @@ function searchMbti(index) {
   console.log(colorArray)
 };
 
+function handleUpload(event) {
+  const file_obj = event.file.originFileObj
+  if (file_obj) {
+    imageUrl.value = URL.createObjectURL(file_obj)
+  }
+}
+
+function handlePostType(type) {
+  postType.value = type
+}
+
+function hanldeNewPost() {
+
+}
 
 </script>
 
@@ -32,24 +50,56 @@ function searchMbti(index) {
       <hr style="color: #D2CFCF;"/>
 
       <ul v-for="(mbti, index) in mbtiArray" :key="mbti">
-        <li :class="colorArray[index]? 'active': 'inactive'" @click="searchMbti(index)"># {{ mbti }}</li>
+        <li :class="colorArray[index]? 'active': 'inactive'" @click="searchMbti(index)"># {{ mbti.value }}</li>
       </ul>
 
     </div>
   
     <main>
       <div class="community-flex-right">
-        <TextArea 
-        class="top-box" 
-        v-model="message" 
-        placeholder="add multiple lines" 
-        :rows="4"  
-        show-count 
-        :maxlength="100">
-        </TextArea>
+        <div class="top-box">
+          <div>
+            <Upload
+              name="avatar"
+              :file-list="postImage"
+              list-type="picture-card"
+              class="avatar-uploader"
+              @change="handleUpload"
+            >
+              <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="imgPreview"/>
+              <div v-else>
+                <loading-outlined v-if="loading"></loading-outlined>
+                <plus-outlined v-else></plus-outlined>
+                <div class="ant-upload-text">Upload</div>
+              </div>
+            </Upload>
+            <Select
+            :value="postType"
+            show-search
+            style="width: 102px"
+            :options="mbtiArray"
+            @change="handlePostType"
+            >
+          </Select>
+          </div>
+
+          <TextArea
+            class="inputBox"
+            v-model="message" 
+            placeholder="Make a new post......" 
+            :rows="4"  
+            show-count 
+            :maxlength="100">
+          </TextArea>
+
+          <Button class="post-button" type="primary" @click="hanldeNewPost">Post</Button>
+        </div>
+
+
+
         <div class="buttom-box">
           <div v-for="(post, index) in postTestData" :key="index">
-            <PostCard :postContent=post>
+            <PostCard class="post-card" :postContent=post>
             </PostCard>
           </div>
         </div>
@@ -59,6 +109,10 @@ function searchMbti(index) {
   </div>
 </template>
 <style scoped>
+.imgPreview{
+  width:102px;
+  height: 102px;
+}
 body{
   overflow: hidden;
   height: 100vh;
@@ -75,6 +129,12 @@ li{
   padding: 0.3rem;
 }
 
+.post-button {
+  position: absolute;
+  right: 17%;
+  top: 20%;
+}
+
 .active {
   background-color: #802f22b4;
   border-radius: 8px;
@@ -82,13 +142,32 @@ li{
   color: rgb(243, 237, 237);
 }
 
-.inactive {
+.top-box {
+  margin-top: 1rem;
+  margin-right: 3rem;
+  width: 80%;
+  height: 10%;
+  display: flex;
+}
+
+.avatar-uploader {
+  display:inline;
+  flex: 1;
+}
+
+.inputBox {
+  display:inline;
+  flex: 4;
 }
 
 @media (hover: hover) {
   li:hover {
     background-color: rgba(113, 113, 113, 0.082);
     border-radius: 8px;
+  }
+  .post-card:hover {
+    background-color: rgba(113, 113, 113, 0.082);
+    border-radius: 10px;
   }
 }
 
@@ -99,7 +178,6 @@ li{
 
 /* left side bar: skin type tags */
 .community-flex-left {
-  /* background-color: #FFFFFF; */
   border-right:  1px solid #ededed;
   flex: 1 0 10%;
   padding: 0.5rem;
@@ -117,18 +195,12 @@ main{
   flex-direction: column;
 }
 
-.top-box {
-  margin-right: 3rem;
-  width: 80%;
-  height: 10%;
-}
-
 
 .buttom-box{
   width: 80%;
   height: 90%;
   margin-top: 2rem;
-  border-radius: 30px;
+  /* border-radius: 30px; */
   border-style: solid;
   background-color: #FFFFFF;
   border-color: #D2CFCF;
