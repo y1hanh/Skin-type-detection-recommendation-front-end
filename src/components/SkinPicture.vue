@@ -69,7 +69,7 @@ export default {
       formData.append('file', blob, 'photo.jpg'); // Added filename to the Blob
 
       try {
-        const response = await fetch('http://127.0.0.1:5000/predict', {
+        const response = await fetch('http://127.0.0.1:5001/predict', {
           method: 'POST',
           body: formData
         });
