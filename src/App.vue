@@ -18,6 +18,9 @@ const navbarClass = computed(() => {
         <RouterLink to="/community" active-class="active-link">COMMUNITY</RouterLink>
       </nav>
 
+      <span class="navbar-website-title">
+        SKIN MBTI
+      </span>
       
       <span class="navbar-profile">
         <RouterLink to="/mbti">LOGIN |</RouterLink>
@@ -44,20 +47,29 @@ body {
 }
 
 .navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 35px 55px;
+  padding: 10px 55px;
+  z-index: 9999; 
+  align-items: center
+}
+
+.navbar-website-title {
+  width: 50%;
 }
 
 .home-route {
   background-color: #802F22;
-  
 }
 
 .other-route {
   background-color: #F3E5D9;
 }
+
 
 .navbar-profile a {
   color:rgb(30, 30, 30);
@@ -65,24 +77,26 @@ body {
 
 .navbar-parent {
   display: flex;
-  width: 50%;
   flex-direction: row;
   align-items: left;
   gap: 10px;
 }
 
-
 .navbar-parent a {
   color:rgb(30, 30, 30);
 }
+
 .navbar-parent .active-link {
   color: #b3b2b2; 
+  font-weight: 700;
 }
-.mainbody {
-  /* Add your styles here */}
+
+.other-route .active-link {
+  color:rgb(30, 30, 30);
+  font-weight: 700;
+}
 
 img {
   border-radius: 50%;
-
 }
 </style>

@@ -1,0 +1,33 @@
+[
+  {
+    "username": "Kuromi",
+    "create_time": "03-08-2024",
+    "user_avatar": "../src/components/icons/kuromi.png",
+    "post": {
+      "skin_tag": "DRPT",
+      "picture": "../src/components/icons/kuromi.png",
+      "content": "Hi, I’m Kuromi. I have very dry skin type! I need helpppp!\n Any recommend skin care products pls? \nthanks :)"
+    },
+    "comments": [
+      {
+        "username":"Kuromi",
+        "create_time": "03-08-2024",
+        "content": ""
+      },
+      {
+        "username":"Kuromi",
+        "create_time": "03-08-2024",
+        "content": ""
+      }
+    ]
+  },
+  {
+    "username": "Pikachu",
+    "user_avatar": "../src/components/icons/pikachu.jpeg",
+    "create_time": "01-08-2024",
+    "post": {
+      "skin_tag": "ORPT",
+      "content": "Hi, I’m Pikachu. I have very Oily skin type! I need helpppp!\n Any recommend skin care products pls? \nthanks :)"
+    }
+  }
+]
