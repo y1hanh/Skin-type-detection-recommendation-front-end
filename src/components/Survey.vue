@@ -1,7 +1,8 @@
 <template>
   <main>
     <div class="parent">
-      <div class="surveyParent">
+      <div  v-if="descriptionResult===''">
+      <div class="surveyParent" >
         <h1>Survey</h1>
         <p>To let us get to know your skinMBTI better...</p>
       </div>
@@ -12,7 +13,7 @@
           <div v-if="currentSurvey === survey.id" class="surveyBox">
             <h3>{{ survey.question }}</h3>
             <div class="surveyAnswer">
-              <!-- Single choice (radio) -->
+              
               <div v-if="survey.type === 'radio'">
                 <div v-for="(option, index) in survey.options" :key="survey.id + '-' + index" class="radio-group">
                   <input
@@ -20,65 +21,98 @@
                     :id="survey.id + '-radio-' + index"
                     :name="'survey-' + survey.id" 
                     v-model="models[survey.model]"
-                    :value="option"
+                    :value="option.text"
                   />
-                  <label :for="survey.id + '-radio-' + index">{{ option }}</label>
+                  <label :for="survey.id + '-radio-' + index">{{ option.text }}</label>
                 </div>
               </div>
-              <!-- Multiple choice (checkbox) -->
+             
               <div v-if="survey.type === 'checkbox'">
                 <div v-for="(option, index) in survey.options" :key="survey.id + '-' + index" class="checkbox-group">
                   <input
                     type="checkbox"
                     :id="survey.id + '-checkbox-' + index"
-                    v-model="models[survey.model]"
-                    :value="option"
+                    :value="option.text"
                   />
-                  <label :for="survey.id + '-checkbox-' + index">{{ option }}</label>
+                  <label :for="survey.id + '-checkbox-' + index">{{ option.text }}</label>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      
       
       <button class="surveyBtn" @click="nextSurvey">Next Survey</button>
-      
+    </div>
+  </div>
+      <!-- Results Display -->
+      <div v-else v-if="currentSurvey === surveys.length" class="surveyBox" >
+        <h2>Survey Results</h2>
+        <p>{{ surveyResult }}</p>
+        <p>{{ descriptionResult }}</p>
+      </div>
     </div>
   </main>
 </template>
 
-
 <script setup>
 import { ref } from 'vue'
-import { useRouter } from 'vue-router'
 import surveyData from '../assets/surveyQuestions.json'
+import surveyResults from '../assets/surveyResults.json'
 
 const surveys = ref(surveyData)
 
-const models = {
-  selectedMoistureOption: ref(''),
-  selectedSensitivityOption: ref(''),
-  selectedDarkSpots: ref(''),
-  selectedWrinkles: ref(''),
-  selectedConcerns: ref([])
-}
+const models = ref({
+  selectedMoistureOption: '', // Should be a string
+  selectedSensitivityOption: '', // Should be a string
+  selectedDarkSpots: [], // Should be an array
+  selectedWrinkles: [], // Should be an array
+});
+
 
 const currentSurvey = ref(1)
-
-const router = useRouter()
+const surveyResult = ref('')
+const descriptionResult = ref('')
 
 const nextSurvey = () => {
   if (currentSurvey.value === surveys.value.length) {
-    // Handle form submission here
-    alert('Survey done!')
-    
-    // router.push('/community')
+    compareAnswers();
   } else {
-    currentSurvey.value += 1
+    currentSurvey.value += 1;
   }
 }
+
+const compareAnswers = () => {
+  // Collect results based on survey responses
+  const results = surveys.value.map(survey => {
+    // Find the selected option value for each survey
+    return survey.options.find(option => option.text === models.value[survey.model])?.value || '';
+  });
+
+  // Combine results to create the resultKey
+  const resultKey = results.join('').toUpperCase(); // Convert to uppercase
+
+  // Retrieve the description for the resultKey
+  const description = surveyResults[resultKey]?.description;
+
+  if (description) {
+    surveyResult.value = resultKey;
+    descriptionResult.value = description;
+   
+  } else {
+    alert('No skinMBTI available for this. Please answer all the questions!') ;
+    surveyResult.value = ''; 
+    currentSurvey.value = 1; 
+  }
+}
+
+
+
+
+
 </script>
+
+
 
 
 
@@ -115,6 +149,13 @@ h1 {
 }
 
 .surveyBox {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  margin: 20px 0; /* Add margin between survey boxes */
+}
+.surveyResults {
   padding: 20px;
   border: 1px solid #ddd;
   border-radius: 8px;
