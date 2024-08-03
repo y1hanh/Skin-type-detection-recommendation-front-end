@@ -1,16 +1,31 @@
 <script setup>
+import { computed } from 'vue';
+
 defineProps({
   postContent: Object
 })
+
+const username = ["Kuromi", "Hello Kitty", "Amaura", "Bulbasaur", "Clefairy", "Skarmory", "Garbodor", "Chico", "Drowzee"]
+const getUserAvatar = computed(() => 
+"../src/assets/user-avatar/00" + (Math.floor(Math.random() * 10)).toString() + ".jpeg"
+)
+
+const getPostPic = computed(() => 
+"../src/assets/skin-care-prod/00" + (Math.floor(Math.random() * 10)).toString() + ".jpeg"
+)
+
+const getUsername = computed(() => 
+username[Math.floor(Math.random() * 10)]
+)
 </script>
 
 <template>
   <div>
     <div class="post-header">
-      <img class="userAvatar" :src=postContent.user_avatar alt="user avatar">
+      <img class="userAvatar" :src=getUserAvatar alt="user avatar">
       <div>
         <div>
-        {{ postContent["username"] }}  -  {{ postContent["skin_tag"] }}
+        {{ getUsername }}  -  {{ postContent["skin_tag"] }}
         </div>
         <div>
           {{ postContent["create_time"] }}
@@ -19,7 +34,7 @@ defineProps({
     </div>
     <div class="post-content">
       <div style="text-align: center;">
-        <img class="post-img" :src="postContent?.post?.picture" alt="post picture">
+        <img class="post-img" :src="getPostPic" alt="post picture">
       </div>
       <p class="post-content-text">
       {{ postContent?.post?.content }}
@@ -31,7 +46,7 @@ defineProps({
         Comment
       </div>
       <div style="color: gray;">
-        {{ postContent?.comments?.length ? postContent?.comments?.length + " comments" : "0 comment"}} 
+        {{ Math.floor(Math.random() * 10) + " comments"}} 
       </div>
     </div>
   </div>

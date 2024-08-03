@@ -4,11 +4,15 @@ import mbti_array from "../assets/mbti_array.json";
 import { Button,Input, Upload, Select } from 'ant-design-vue';
 import PostCard from "./PostCard.vue"
 import postTestData from "../assets/postTestData.json"
+import { addPost, getPost, searchPost } from '@/apis/community.js'
+
+const allPosts = ref([])
 
 const message = ref("");
 const postImage = ref([])
 const imageUrl = ref("")
 const postType = ref("")
+const base64 = ref("")
 
 const mbtiArray = mbti_array.filter((v) => v.value);
 const colorArray = ref(new Array(mbtiArray.length));
@@ -16,27 +20,77 @@ colorArray.value.fill(false);
 
 const { TextArea } = Input;
 
-function searchMbti(index) {
+async function searchMbti(index) {
+  // change the background color
   colorArray.value.fill(false);
   colorArray.value[index] = true;
-  console.log(colorArray)
+  try {
+    const res = await searchPost(mbtiArray[index].value);
+    const { body } = await res.json();
+    allPosts.value = JSON.parse(body);
+  } catch (error) {
+    
+  }
 };
 
-function handleUpload(event) {
+async function handleUpload(event) {
   const file_obj = event.file.originFileObj
   if (file_obj) {
     imageUrl.value = URL.createObjectURL(file_obj)
+    // base64.value = await convertBase64(image_file);
   }
+  
 }
+
+// const convertBase64 = (file) => {
+//   return new Promise ((resolve, reject) => {
+//       const fileReader = new FileReader();
+//       fileReader.readAsDataURL(file);
+
+//       fileReader.onload = () => {
+//           resolve(fileReader.result)
+//       }
+
+//       fileReader.onerror = (error) => {
+//           reject(error)
+//       }
+//   })
+// } 
 
 function handlePostType(type) {
   postType.value = type
 }
 
-function hanldeNewPost() {
-
+async function hanldeNewPost() {
+  const data = {
+  }
+  try {
+    const res = await addPost(data)
+    // const json_res = res.json()
+    // json_res.then(
+    //   function({statusCode}){
+    //     if(statusCode == 200)
+    //     {
+    //       success.value = true
+    //       loading.value = false
+    //     }
+    //   }
+    // )
+  } catch (error) {
+    console.log(error)
+  }
 }
 
+async function getAllPosts() {
+  try {
+    const res = await getPost();
+    const { body } = await res.json();
+    allPosts.value = JSON.parse(body);
+  } catch (error) {
+    
+  }
+}
+getAllPosts()
 </script>
 
 
@@ -45,9 +99,8 @@ function hanldeNewPost() {
   <body>
   <div class="community-flex-parent">
     <div class="community-flex-left">
-      <p class="header">All community</p>
+      <div class="header" @click="getAllPosts">All community</div>
       <hr style="color: #D2CFCF;"/>
-
       <ul v-for="(mbti, index) in mbtiArray" :key="mbti">
         <li :class="colorArray[index]? 'active': 'inactive'" @click="searchMbti(index)"># {{ mbti.value }}</li>
       </ul>
@@ -91,10 +144,8 @@ function hanldeNewPost() {
           <Button class="post-button" type="dashed" @click="hanldeNewPost">Post</Button>
         </div>
 
-
-
         <div class="buttom-box">
-          <div v-for="(post, index) in postTestData" :key="index">
+          <div v-for="(post, index) in allPosts" :key="index">
             <PostCard class="post-card" :postContent=post>
             </PostCard>
           </div>
@@ -165,6 +216,11 @@ li{
     background-color: rgba(113, 113, 113, 0.082);
     border-radius: 10px;
   }
+
+  .header:hover {
+    background-color: rgba(113, 113, 113, 0.082);
+    border-radius: 8px;
+  }
 }
 
 .post-card {
@@ -207,10 +263,12 @@ main{
 }
 
 .header {
-  margin: 1rem;
   font: 14px "Fira Sans", sans-serif;
   color: #858383;
   font-weight: bold;
+  height: 2rem;
+  line-height: 2rem;
+  margin-bottom: 5px;
 }
 
 @media (max-width: 500px) {
