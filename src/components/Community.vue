@@ -15,29 +15,31 @@ const { TextArea } = Input;
 
 
   
-
-<body class="community-flex-parent">
-  <div class="community-flex-left">
-    <p class="header">All community</p>
-    <hr style="color: #D2CFCF;"/>
-    <ul v-for="mbti in mbti_array.mbti" :key="mbti">
-      <li @click="searchMbti" style="color: #858383;"># {{ mbti }} </li>
-    </ul>
-  </div>
-  <div class="community-flex-right">
-    <TextArea 
-    class="top-box" 
-    v-model="message" 
-    placeholder="add multiple lines" 
-    :rows="10"  
-    :maxlength="6">
-    </TextArea>
-    <div class="button-box">
+<template>
+  <div class="community-flex-parent">
+    <div class="community-flex-left">
+      <p class="header">All community</p>
+      <hr style="color: #D2CFCF;"/>
+      <ul>
+        <li v-for="mbti in mbti_array.mbti" :key="mbti" @click="searchMbti" style="color: #858383;">
+          # {{ mbti }}
+        </li>
+      </ul>
+    </div>
+    <div class="community-flex-right">
+      <TextArea 
+        class="top-box" 
+        v-model="message" 
+        placeholder="add multiple lines" 
+        :rows="10"  
+        :maxlength="6"
+      />
+      <div class="button-box">
+        <!-- Your button elements here -->
+      </div>
     </div>
   </div>
-</body>
 </template>
-
 <style scoped>
 ul{
   list-style-type: none;

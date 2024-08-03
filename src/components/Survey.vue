@@ -1,5 +1,6 @@
 <template>
   <main>
+    <div class="parent">
     <div class="surveyParent"><h1>Survey</h1>
     <p>To let us get to know your skinMBTI better...</p></div>
     
@@ -106,11 +107,13 @@
     </div>
 
     <button class="surveyBtn" @click="nextSurvey">Next Survey</button>
+  </div>
   </main>
 </template>
 
 <script setup>
 import { ref } from 'vue'
+import {useRouter} from 'vue-router';
 
 // Options for the skin moisture level survey
 const moistureOptions = ref([
@@ -144,7 +147,7 @@ const selectedConcerns = ref([])
 
 // Variable to track the currently visible survey
 const currentSurvey = ref(1)
-import {useRouter} from 'vue-router';
+
 const router = useRouter();
 
 // Function to switch surveys
@@ -183,6 +186,9 @@ h1{font-size: 2.1em;
   .surveyParent p{
     font-family:Haettenschweiler;
   color: #f7a863;
+  }
+  .parent{
+    padding: 1% 15%;
   }
 .surveyBox {
   padding: 20px;
