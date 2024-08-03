@@ -16,9 +16,5 @@ import SkinPicture from "./SkinPicture.vue"
 .mbti-parent {
   display: flex;
   flex-direction:  column;
-
-
 }
-
-
 </style>

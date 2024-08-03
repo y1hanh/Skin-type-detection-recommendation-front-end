@@ -7,8 +7,8 @@
       <img src="../assets/homeSkin3.png" alt="image" />
     </div>
     <div class ="bmtiImage">
-      <h2>SkinMBTI</h2>
-      <p>Identify your skin MBTI  based on our AI scanner and analyzer</p>
+      <h2>16 Baumann Skin Types</h2>
+      <p>Identify your skin MBTI based on our AI scanner and analyzer</p>
       <div  class="bmtiImageInner">
         <img src="../assets/homeSkin4.png" alt="image"/>
         
@@ -52,18 +52,21 @@
   flex-direction: column;
 }
 .bmtiImage h2 {
-  font-size: 2.1em; 
+  font-size: 3em; 
   font-family:Jim Nightshade;
   font-style: italic;
   color: #E69247;
 }
+
 .bmtiImage p {
-  font-size: 1.4em; 
+  font-size: 2em; 
   margin-bottom: 1.5%; 
   font-family:Caudex;
   color: #ffffff;
   text-align: center;
+  font-weight: 900;
 }
+
 .bmtiImage{
   display: flex;
   flex-direction: column;

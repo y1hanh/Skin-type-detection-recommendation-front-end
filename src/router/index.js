@@ -18,6 +18,11 @@ const router = createRouter({
       path: '/mbti',
       name: 'mbti',
       component: () => import('../views/MbtiView.vue')
+    },
+    {
+      path: '/explanation',
+      name: 'explanation',
+      component: () => import('../views/ExplanationView.vue')
     }
   ]
 })

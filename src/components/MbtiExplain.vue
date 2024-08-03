@@ -43,9 +43,14 @@ li {
   display: flex;
   align-items: flex-start; /* Align items to the start */
   gap: 10%; /* Space between image and list */
-    align-items: center;
+  align-items: center;
 }
 
+.mbtiExplainRightSide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 </style>
 
@@ -54,17 +59,25 @@ li {
       <h1>What exactly is skin MBTI?</h1>
       <div class="mbtiExplainContent">
         <img src="../assets/mbtiExplain.png" alt="image" />
-        <ul>
-          <li>D = Dehydration or Dry Skin</li>
-          <li>O = Oily Skin or Normal Skin</li>
-          <li>S = Sensitive Skin </li><li > R = Resistant Skin</li>
-          <li>P = Uneven Skin Pigment (dark spots on face)  </li><li > N = No Dark Spots</li>
-          <li>W = Wrinkle-prone  </li><li > T = Tight Unwrinkled Skin & Healthy Habits</li>
-        </ul>
+        <div class="mbtiExplainRightSide">
+          <ul>
+            <li>D = Dehydration or Dry Skin</li>
+            <li>O = Oily Skin or Normal Skin</li>
+            <li>S = Sensitive Skin </li><li > R = Resistant Skin</li>
+            <li>P = Uneven Skin Pigment (dark spots on face)  </li><li > N = No Dark Spots</li>
+            <li>W = Wrinkle-prone  </li><li > T = Tight Unwrinkled Skin & Healthy Habits</li>
+          </ul>
+          <Button @click="router.push('/explanation')" style="width: 100px;">Learn more</Button>
+      </div>
       </div>
     </main>
   </template>
   
 
 <script setup>
+import { Button } from 'ant-design-vue';
+import {useRouter} from 'vue-router';
+
+
+const router = useRouter();
 </script>
