@@ -14,7 +14,8 @@ const navbarClass = computed(() => {
     <div :class="navbarClass" class="navbar">
       <nav class="navbar-parent">
         <RouterLink to="/" active-class="active-link">HOME</RouterLink>
-        <RouterLink to="/mbti" active-class="active-link">MBTI</RouterLink>
+        <RouterLink to="/mbti" active-class="active-link">Skin Test</RouterLink>
+        <RouterLink to="/explanation" active-class="active-link">Skin Types</RouterLink>
         <RouterLink to="/community" active-class="active-link">COMMUNITY</RouterLink>
       </nav>
 

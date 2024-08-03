@@ -18,6 +18,7 @@
 import skinCancerNews from "../assets/skinCancerNews.jpg"
 import mbtiExplain from "../assets/mbtiExplain.png"
 import skinRoutineNews from "../assets/skinroutineNews.jpg"
+import skinTalkNews from "../assets/skinTalkNews.jpg"
 
 import { ref } from 'vue'
 
@@ -25,7 +26,7 @@ const items = ref([
   { id: 1, name: 'Skin Cancer', image_url: skinCancerNews, link: 'https://www.cancer.org.au/cancer-information/types-of-cancer/skin-cancer' },
   { id: 2, name: '16 Baumann Skin Types', image_url: mbtiExplain, link: 'https://skintypesolutions.com/blogs/skincare/16-baumann-skin-types' },
   { id: 3, name: 'Skin Routine', image_url: skinRoutineNews, link: 'https://www.healthline.com/health/beauty-skin-care/order-of-skin-care' },
-  { id: 4, name: 'Item 4', image_url: skinCancerNews, link: '#' }
+  { id: 4, name: 'Skin Type Talks', image_url: skinTalkNews, link: 'https://www.youtube.com/playlist?list=PLpfTl28FExdkj-4Rz7KMIcjM5XPxAVDaO' }
 ])
 </script>
 
@@ -53,9 +54,7 @@ const items = ref([
   border-radius: 30px;
   background-color: #ffffff;
   width: 350px; 
-  height: 450px;
-
-  
+  height: 400px;
 }
 
 .image-container {
