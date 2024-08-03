@@ -50,7 +50,9 @@
         <h2>Survey Results</h2>
         <p>{{ surveyResult }}</p>
         <p>{{ descriptionResult }}</p>
+        <button class="community-button" @click="handleUpload">Connect to community</button>
       </div>
+      
     </div>
   </main>
 </template>
@@ -117,6 +119,22 @@ const compareAnswers = () => {
 
 
 <style scoped>
+
+.community-button {
+  background-color: #8c2515;
+  border-radius: 8px;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 20px;
+  text-align: center;
+  transition: background-color 200ms, transform 200ms;
+  margin-left: auto;
+  
+}
 .surveyBtn {
   background-color: #E69247;
   color: black;
