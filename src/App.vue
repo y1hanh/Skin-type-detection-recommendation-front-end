@@ -19,7 +19,7 @@ const navbarClass = computed(() => {
       </nav>
 
       <span class="navbar-website-title">
-        SKIN MBTI
+        <img src="./components/icons/web-logo.png" alt="Skin MBTI">
       </span>
       
       <span class="navbar-profile">
@@ -55,12 +55,10 @@ body {
   justify-content: space-between;
   padding: 10px 55px;
   z-index: 9999; 
-  align-items: center
+  align-items: center;
 }
 
-.navbar-website-title {
-  width: 50%;
-}
+
 
 .home-route {
   background-color: #802F22;
@@ -70,6 +68,15 @@ body {
   background-color: #F3E5D9;
 }
 
+.navbar-website-title {
+  flex: 1;
+  text-align: center;
+}
+
+.navbar-profile {
+  flex: 1;
+  text-align: end;
+}
 
 .navbar-profile a {
   color:rgb(30, 30, 30);
@@ -80,6 +87,7 @@ body {
   flex-direction: row;
   align-items: left;
   gap: 10px;
+  flex:1
 }
 
 .navbar-parent a {
@@ -94,9 +102,5 @@ body {
 .other-route .active-link {
   color:rgb(30, 30, 30);
   font-weight: 700;
-}
-
-img {
-  border-radius: 50%;
 }
 </style>
