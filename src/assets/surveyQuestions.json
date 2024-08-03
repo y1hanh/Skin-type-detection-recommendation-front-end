@@ -1,58 +1,96 @@
 [
-    {
-      "id": 1,
-      "question": "How would you describe your skin's moisture level?",
-      "options": [
-        "My skin often feels tight, rough, or flaky.",
-        "My skin feels balanced, not particularly oily or dry.",
-        "My skin often feels oily, especially by the end of the day."
-      ],
-      "type": "radio",
-      "model": "selectedMoistureOption"
-    },
-    {
-      "id": 2,
-      "question": "How does your skin react to new skincare products or environmental changes?",
-      "options": [
-        "My skin often reacts with redness, itching, or breakouts.",
-        "My skin rarely reacts to products or environmental changes."
-      ],
-      "type": "radio",
-      "model": "selectedSensitivityOption"
-    },
-    {
-      "id": 3,
-      "question": "Do you have any visible dark spots, freckles, or uneven skin tone?",
-      "options": [
-        "Yes, I have dark spots, freckles, or uneven pigmentation.",
-        "No, my skin tone is fairly even without noticeable dark spots."
-      ],
-      "type": "radio",
-      "model": "selectedDarkSpots"
-    },
-    {
-      "id": 4,
-      "question": "How prone is your skin to developing fine lines or wrinkles?",
-      "options": [
-        "I have visible fine lines or wrinkles, or I notice them developing.",
-        "My skin is smooth, with minimal to no visible wrinkles."
-      ],
-      "type": "radio",
-      "model": "selectedWrinkles"
-    },
-    {
-      "id": 5,
-      "question": "What is your biggest skin concern or priority? (multiple answers)",
-      "options": [
-        "Reducing fine lines and wrinkles.",
-        "Managing acne or breakouts.",
-        "Evening out skin tone and pigmentation.",
-        "Controlling oil and shine",
-        "Hydrating and soothing dry skin",
-        "Maintaining a natural and minimal skincare routine"
-      ],
-      "type": "checkbox",
-      "model": "selectedConcerns"
-    }
-  ]
-  
+  {
+    "id": 1,
+    "question": "How would you describe your skin's moisture level?",
+    "options": [
+      {
+        "text": "My skin often feels tight, rough, or flaky.",
+        "value": "D"
+      },
+      {
+        "text": "My skin feels balanced, not particularly oily or dry.",
+        "value": "D"
+      },
+      {
+        "text": "My skin often feels oily, especially by the end of the day.",
+        "value": "O"
+      }
+    ],
+    "type": "radio",
+    "model": "selectedMoistureOption"
+  },
+  {
+    "id": 2,
+    "question": "How does your skin react to new skincare products or environmental changes?",
+    "options": [
+      {
+        "text": "My skin often reacts with redness, itching, or breakouts.",
+        "value": "S"
+      },
+      {
+        "text": "My skin rarely reacts to products or environmental changes.",
+        "value": "R"
+      }
+    ],
+    "type": "radio",
+    "model": "selectedSensitivityOption"
+  },
+  {
+    "id": 3,
+    "question": "Do you have any visible dark spots, freckles, or uneven skin tone?",
+    "options": [
+      {
+        "text": "Yes, I have dark spots, freckles, or uneven pigmentation.",
+        "value": "P"
+      },
+      {
+        "text": "No, my skin tone is fairly even without noticeable dark spots.",
+        "value": "N"
+      }
+    ],
+    "type": "radio",
+    "model": "selectedDarkSpots"
+  },
+  {
+    "id": 4,
+    "question": "How prone is your skin to developing fine lines or wrinkles?",
+    "options": [
+      {
+        "text": "I have visible fine lines or wrinkles, or I notice them developing.",
+        "value": "W"
+      },
+      {
+        "text": "My skin is smooth, with minimal to no visible wrinkles.",
+        "value": "T"
+      }
+    ],
+    "type": "radio",
+    "model": "selectedWrinkles"
+  },
+  {
+    "id": 5,
+    "question": "What is your biggest skin concern or priority? (multiple answers)",
+    "options": [
+      {
+        "text": "Reducing fine lines and wrinkles."
+      },
+      {
+        "text": "Managing acne or breakouts."
+      },
+      {
+        "text": "Evening out skin tone and pigmentation."
+      },
+      {
+        "text": "Controlling oil and shine"
+      },
+      {
+        "text": "Hydrating and soothing dry skin"
+      },
+      {
+        "text": "Maintaining a natural and minimal skincare routine"
+      }
+    ],
+    "type": "checkbox",
+    "model": "selectedConcerns"
+  }
+]

@@ -1,0 +1,51 @@
+{
+    "DSPT": {
+      "description": "The DSPT Skin Type is Dry, Sensitive, Pigmented, and Tight, with three barriers to skin health: dehydration, inflammation, and pigmentation. While dry, sensitive skin can require extra care, DSPT skin types can be on the road to healthier, happier skin with a skincare routine that includes the right moisturizers and skin-soothing ingredients."
+    },
+    "DSNT": {
+      "description": "The DSNT Skin Type is Dry, Sensitive, Non-pigmented, and Tight, with two barriers to skin health: dehydration and inflammation. While dry, sensitive skin can be a challenge for this skin type, the right skincare regimen that includes a barrier repair moisturizer and anti-inflammatory ingredients can leave DSNT types well on their way to healthier, clearer skin."
+    },
+    "DSPW": {
+      "description": "The DSPW Skin Type is Dry, Sensitive, Pigmented, and Wrinkled. DSPW is one of the most complex and challenging skin types to manage, as all four barriers to skin health are present: dehydration, inflammation, pigmentation, and aging. Many DSPW skin types also struggle with acne or rosacea. However, all of these skin concerns can be remedied with the proper skincare ingredients and regimen."
+    },
+    "DSNW": {
+      "description": "The DSNW Skin Type is Dry, Sensitive, Non-pigmented, and Wrinkled. The majority of people with this skin type fit into one of two categories: an adult with rosacea and photoaging, or a woman with acne."
+    },
+    "OSPT": {
+      "description": "The OSPT Skin Type is Oily, Sensitive, Pigmented, and Tight. Most people with this skin type are younger than 30, have a Fitzpatrick Skin Type of III or higher, and struggle with acne and post-inflammatory hyperpigmentation."
+    },
+    "OSNT": {
+      "description": "The OSNT Skin Type is Oily, Sensitive, Non-Pigmented, and Tight. The majority of people with this skin type are under the age of 30 with acne. Sensitivity caused by underlying inflammation is the one barrier to skin health for OSNT types. However, using the proper acne treatment regimen for your skin type and anti-inflammatory ingredients can help you achieve a clear, acne-free complexion."
+    },
+    "OSPW": {
+      "description": "The OSPW Skin Type is Oily, Sensitive, Pigmented, and Wrinkled, with three barriers to skin health: inflammation, pigmentation, and aging. Together, inflammation and pigmentation problems can be a challenge for OSPWs, often leading to acne, melasma, rosacea, or post-inflammatory hyperpigmentation. Baumann Skin Type Number 8 is one of the most common of the 16 Baumann Skin Types®."
+    },
+    "OSNW": {
+      "description": "The OSNW Skin Type stands for Oily, Sensitive, No Uneven Pigment, and Wrinkle-Prone. If you are a Baumann Skin Type 8 you have two barriers to skin health that need to be corrected: inflammation and aging."
+    },
+    "ORPT": {
+      "description": "The ORPT Skin Type is Oily, Resistant, Pigmented, and Tight, with only one barrier to skin health: pigmentation. An uncommon skin type, ORPT is usually found in younger people who have frequent sun exposure. Occasionally, younger women with melasma will have ORPT skin. In this case, discontinuing the use of oral contraceptives may help to clear up uneven skin tone."
+    },
+    "ORNT": {
+      "description": "If you are an ORNT, congratulations! You have the best skin type! We call this Perfect 10 Skin. The ORNT Skin Type is Oily, Resistant, No uneven pigment, and Tight. Your healthy skin has no barriers to skin health. Also referred to as Perfect 10 Skin. ORNT is what is considered to be 'normal' skin and is uncommonly seen in my dermatology practice. ORNT skin is easy to manage, and your skincare regimen is aimed at keeping your skin the way it is."
+    },
+    "ORPW": {
+      "description": "The ORPW Skin Type is Oily, Resistant, Pigmented, and Wrinkled, with two barriers to skin health: pigmentation and wrinkles. Congratulations on finding your skin type! You are one step closer to your healthiest skin!"
+    },
+    "ORNW": {
+      "description": "The ORNW Skin Type is Oily, Resistant, Non-Pigmented, and Wrinkled, with only one barrier to skin health: aging. This skin type is considered ideal for people over 30, since signs of aging naturally become more apparent around this age due to accumulated sun exposure and the natural aging process."
+    },
+    "DRPT": {
+      "description": "The DRPT Skin Type is Dry, Resistant, Pigmented, and Tight, with two barriers to skin health: dehydration and uneven pigmentation. This skin type is uncommon and is usually seen in those with Fitzpatrick Skin Type III or higher."
+    },
+    "DRNT": {
+      "description": "The DRNT Skin Type is Dry, Resistant, Non-Pigmented, and Tight, with only one barrier to skin health: dehydration. Because they only have one barrier to skin health, DRNTs are rarely seen in a dermatology practice. Though dryness can lead to a dull, uneven complexion and sometimes itchiness and flaking, these symptoms are typically easy to treat."
+    },
+    "DRPW": {
+      "description": "The DRPW Skin Type is Dry, Resistant, Pigmented, and Wrinkled, with three barriers to skin health: dehydration, pigmentation, and aging. DRPW is a common skin type. It can fit a number of profiles. Congratulations on finding your skin type! You're one step closer to perfect skin health!"
+    },
+    "DRNW": {
+      "description": "The DRNW Skin Type is Dry, Resistant, Non-Pigmented, and Wrinkled, with two barriers to skin health: dehydration and aging."
+    }
+  }
+  
