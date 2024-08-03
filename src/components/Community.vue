@@ -2,14 +2,12 @@
 import { computed, ref } from "vue";
 import mbti_array from "../assets/mbti_array.json";
 import { Button,Input, Upload, Select } from 'ant-design-vue';
-import { PlusOutlined, LoadingOutlined } from '@ant-design/icons-vue';
 import PostCard from "./PostCard.vue"
 import postTestData from "../assets/postTestData.json"
 
 const message = ref("");
 const postImage = ref([])
 const imageUrl = ref("")
-const loading = ref(true)
 const postType = ref("")
 
 const mbtiArray = mbti_array.filter((v) => v.value);
@@ -44,6 +42,7 @@ function hanldeNewPost() {
 
   
 <template>
+  <body>
   <div class="community-flex-parent">
     <div class="community-flex-left">
       <p class="header">All community</p>
@@ -68,8 +67,6 @@ function hanldeNewPost() {
             >
               <img v-if="imageUrl" :src="imageUrl" alt="avatar" class="imgPreview"/>
               <div v-else>
-                <loading-outlined v-if="loading"></loading-outlined>
-                <plus-outlined v-else></plus-outlined>
                 <div class="ant-upload-text">Upload</div>
               </div>
             </Upload>
@@ -91,8 +88,7 @@ function hanldeNewPost() {
             show-count 
             :maxlength="100">
           </TextArea>
-
-          <Button class="post-button" type="primary" @click="hanldeNewPost">Post</Button>
+          <Button class="post-button" type="dashed" @click="hanldeNewPost">Post</Button>
         </div>
 
 
@@ -107,6 +103,7 @@ function hanldeNewPost() {
       </div>
     </main>
   </div>
+</body>
 </template>
 <style scoped>
 .imgPreview{
@@ -130,9 +127,8 @@ li{
 }
 
 .post-button {
-  position: absolute;
-  right: 17%;
-  top: 20%;
+  margin: 1rem;
+  float: bottom;
 }
 
 .active {
@@ -171,6 +167,12 @@ li{
   }
 }
 
+.post-card {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  margin-bottom: 1rem;
+}
+
 .community-flex-parent {
   display: flex;
   height: 100%;
@@ -200,10 +202,7 @@ main{
   width: 80%;
   height: 90%;
   margin-top: 2rem;
-  /* border-radius: 30px; */
-  border-style: solid;
-  background-color: #FFFFFF;
-  border-color: #D2CFCF;
+
   margin-right: 3rem;
 }
 

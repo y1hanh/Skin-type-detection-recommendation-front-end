@@ -21,9 +21,9 @@ defineProps({
       <div style="text-align: center;">
         <img class="post-img" :src="postContent?.post?.picture" alt="post picture">
       </div>
-      <div class="post-content-text">
+      <p class="post-content-text">
       {{ postContent?.post?.content }}
-        </div>
+        </p>
     </div>
     <div class="post-comment">
       <div class="comment-area">
@@ -56,16 +56,34 @@ defineProps({
   margin: 15px;
 }
 
+p{
+  max-width: 100ch;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .post-content-text {
   padding: 1rem;
+  text-overflow: ellipsis;
+}
+
+.post-content {
+  border-bottom: gray solid 0.5px;
 }
 
 .post-comment {
   display: flex;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 5px;
+  margin: 5px;
 }
 
+.comment-area {
+  width: 130px;
+  text-align: center;
+  font-size: 14px;
+  height: 100%;
+}
 @media (hover: hover){
   .comment-area:hover {
     background-color: rgba(113, 113, 113, 0.082);
